@@ -1,5 +1,5 @@
 public class BillChecker {
     public String checkBills() {
-        return "";
+        return "All right";
     }
 }
