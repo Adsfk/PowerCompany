@@ -1,9 +1,11 @@
+import java.time.LocalDate;
+
 public class Bill {
 
-    private final String startDate;
-    private final String endDate;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
 
-    public Bill(String startDate, String endDate) {
+    public Bill(LocalDate startDate, LocalDate endDate) {
         this.startDate = startDate;
         this.endDate = endDate;
     }
