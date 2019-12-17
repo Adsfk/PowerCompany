@@ -2,6 +2,7 @@ import java.util.List;
 
 public class BillChecker {
     public String checkBills(List<Bill> bills) {
-        return "All right";
+        if(bills.size()<=1) return "All right";
+        else return "Gap";
     }
 }
