@@ -31,4 +31,17 @@ public class BillCheckerTest {
 
         assertThat(checker.checkBills(bills)).isEqualTo("Gap");
     }
+
+    @Test
+    public void should_return_overlap_with_two_bills() {
+        BillChecker checker = new BillChecker();
+        Bill bill1 = new Bill(LocalDate.of(2019,8,16),LocalDate.of(2019,9,16));
+        Bill bill2 = new Bill(LocalDate.of(2019,9,10),LocalDate.of(2019,11,17));
+
+        List<Bill> bills = new ArrayList<>();
+        bills.add(bill1);
+        bills.add(bill2);
+
+        assertThat(checker.checkBills(bills)).isEqualTo("Overlap");
+    }
 }
