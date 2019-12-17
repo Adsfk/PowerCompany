@@ -9,4 +9,12 @@ public class Bill {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
 }
