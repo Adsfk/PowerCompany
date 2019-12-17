@@ -16,7 +16,7 @@ public class BillCheckerTest {
         List<Bill> bills = new ArrayList<>();
         bills.add(bill);
 
-        assertThat(checker.checkBills(bills)).isEqualTo("All right");
+        assertThat(checker.checkBills(bills)).isEqualTo(Status.ALLRIGHT);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class BillCheckerTest {
         bills.add(bill1);
         bills.add(bill2);
 
-        assertThat(checker.checkBills(bills)).isEqualTo("Gap");
+        assertThat(checker.checkBills(bills)).isEqualTo(Status.GAP);
     }
 
     @Test
@@ -42,6 +42,6 @@ public class BillCheckerTest {
         bills.add(bill1);
         bills.add(bill2);
 
-        assertThat(checker.checkBills(bills)).isEqualTo("Overlap");
+        assertThat(checker.checkBills(bills)).isEqualTo(Status.OVERLAP);
     }
 }
