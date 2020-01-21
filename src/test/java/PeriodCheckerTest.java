@@ -60,4 +60,21 @@ public class PeriodCheckerTest {
         assertThat(checker.checkBills(periods)).isEqualTo(Status.GAP);
     }
 
+    @Test
+    public void should_return_gap_with_four_periods() {
+        PeriodChecker checker = new PeriodChecker();
+        Period period1 = new Period(LocalDate.of(2019,9,8),LocalDate.of(2019,11,16));
+        Period period2 = new Period(LocalDate.of(2019,11,18),LocalDate.of(2019,12,16));
+        Period period3 = new Period(LocalDate.of(2019,12,16),LocalDate.of(2020,1,14));
+        Period period4 = new Period(LocalDate.of(2020,1,14),LocalDate.of(2020,2,24));
+
+        List<Period> periods = new ArrayList<>();
+        periods.add(period1);
+        periods.add(period2);
+        periods.add(period3);
+        periods.add(period4);
+
+        assertThat(checker.checkBills(periods)).isEqualTo(Status.GAP);
+    }
+
 }
