@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PeriodCheckerTest {
 
     @Test
-    public void should_return_all_right_with_one_periods() {
+    public void should_return_all_right_with_one_period() {
         PeriodChecker checker = new PeriodChecker();
         Period period = new Period(LocalDate.of(2019,10,16),LocalDate.of(2019,11,16));
 
@@ -45,5 +45,19 @@ public class PeriodCheckerTest {
         assertThat(checker.checkBills(periods)).isEqualTo(Status.OVERLAP);
     }
 
+    @Test
+    public void should_return_gap_with_three_periods() {
+        PeriodChecker checker = new PeriodChecker();
+        Period period1 = new Period(LocalDate.of(2019,8,16),LocalDate.of(2019,9,16));
+        Period period2 = new Period(LocalDate.of(2019,9,16),LocalDate.of(2019,11,19));
+        Period period3 = new Period(LocalDate.of(2019,9,23),LocalDate.of(2019,11,25));
+
+        List<Period> periods = new ArrayList<>();
+        periods.add(period1);
+        periods.add(period2);
+        periods.add(period3);
+
+        assertThat(checker.checkBills(periods)).isEqualTo(Status.GAP);
+    }
 
 }
