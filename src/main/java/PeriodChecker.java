@@ -6,13 +6,12 @@ public class PeriodChecker {
 
         Status result = Status.ALLRIGHT;
         for (int i = 0; i < periods.size()-1; i++)
-            result = checkPeriods(periods.get(i), periods.get(i+1));
+            result = checkPeriods(periods.get(i), periods.get(i+1), result);
 
         return result;
     }
 
-    private Status checkPeriods(Period firstPeriod, Period secondPeriod) {
-        Status result = Status.ALLRIGHT;
+    private Status checkPeriods(Period firstPeriod, Period secondPeriod, Status result) {
 
         if(thereIsGap(firstPeriod, secondPeriod)) result = Status.GAP;
         if(thereIsOverlap(firstPeriod, secondPeriod)) result = Status.OVERLAP;
