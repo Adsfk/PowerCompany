@@ -5,20 +5,26 @@ public class PeriodChecker {
         if(periods.size()<=1) return Status.ALLRIGHT;
 
         Status result = Status.ALLRIGHT;
-
-        for (int i = 0; i < periods.size()-1; i++) {
-            result = periodChecker(periods.get(i), periods.get(i+1));
-        }
+        for (int i = 0; i < periods.size()-1; i++)
+            result = checkPeriods(periods.get(i), periods.get(i+1));
 
         return result;
     }
 
-    private Status periodChecker(Period firstPeriod, Period secondPeriod) {
+    private Status checkPeriods(Period firstPeriod, Period secondPeriod) {
         Status result = Status.ALLRIGHT;
 
-        if(firstPeriod.getEndDate().isBefore(secondPeriod.getStartDate())) result = Status.GAP;
-        if(firstPeriod.getEndDate().isAfter(secondPeriod.getStartDate())) result = Status.OVERLAP;
+        if(thereIsGap(firstPeriod, secondPeriod)) result = Status.GAP;
+        if(thereIsOverlap(firstPeriod, secondPeriod)) result = Status.OVERLAP;
 
         return result;
+    }
+
+    private boolean thereIsOverlap(Period firstPeriod, Period secondPeriod) {
+        return firstPeriod.getEndDate().isAfter(secondPeriod.getStartDate());
+    }
+
+    private boolean thereIsGap(Period firstPeriod, Period secondPeriod) {
+        return firstPeriod.getEndDate().isBefore(secondPeriod.getStartDate());
     }
 }
