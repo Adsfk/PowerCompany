@@ -7,9 +7,17 @@ public class PeriodChecker {
         Status result = Status.ALLRIGHT;
 
         for (int i = 0; i < periods.size()-1; i++) {
-            if(periods.get(i).getEndDate().isBefore(periods.get(i+1).getStartDate())) result = Status.GAP;
-            if(periods.get(i).getEndDate().isAfter(periods.get(i+1).getStartDate())) result = Status.OVERLAP;
+            result = periodChecker(periods.get(i), periods.get(i+1));
         }
+
+        return result;
+    }
+
+    private Status periodChecker(Period firstPeriod, Period secondPeriod) {
+        Status result = Status.ALLRIGHT;
+
+        if(firstPeriod.getEndDate().isBefore(secondPeriod.getStartDate())) result = Status.GAP;
+        if(firstPeriod.getEndDate().isAfter(secondPeriod.getStartDate())) result = Status.OVERLAP;
 
         return result;
     }
