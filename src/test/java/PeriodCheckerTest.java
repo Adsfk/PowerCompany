@@ -48,9 +48,9 @@ public class PeriodCheckerTest {
     @Test
     public void should_return_gap_with_three_periods() {
         PeriodChecker checker = new PeriodChecker();
-        Period period1 = new Period(LocalDate.of(2019,8,16),LocalDate.of(2019,9,16));
-        Period period2 = new Period(LocalDate.of(2019,9,16),LocalDate.of(2019,11,19));
-        Period period3 = new Period(LocalDate.of(2019,9,23),LocalDate.of(2019,11,25));
+        Period period1 = new Period(LocalDate.of(2019,9,8),LocalDate.of(2019,11,16));
+        Period period2 = new Period(LocalDate.of(2019,11,16),LocalDate.of(2019,12,14));
+        Period period3 = new Period(LocalDate.of(2019,12,16),LocalDate.of(2020,1,14));
 
         List<Period> periods = new ArrayList<>();
         periods.add(period1);
